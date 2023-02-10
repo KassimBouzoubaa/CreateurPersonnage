@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from "react";
+import CreateurPersonnage from "./containers/CreateurPersonnage/CreateurPersonnage";
+import ListePersonnage from "./containers/ListePersonnage/ListePersonnage";
 function App() {
+  const [actualisation, setActualisation] = useState(false);
+
+  const handleActualisation = () => {
+    setActualisation(!actualisation);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CreateurPersonnage refresh={() => handleActualisation()} />
+      <ListePersonnage refresh={actualisation} />
+    </>
   );
 }
 
